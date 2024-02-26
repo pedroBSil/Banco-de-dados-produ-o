@@ -1,0 +1,42 @@
+-- Criando o banco de dados PRODUCAOBD.
+CREATE DATABASE producaobd;
+
+use producaobd
+
+-- Criando a tabela FABRICANTE.
+CREATE TABLE  Fabricante (
+codfabricante SMALLINT NOT NULL,
+nomefabricante VARCHAR(30) NOT NULL,
+PRIMARY KEY (codfabricante));
+
+-- Criando a tabela PRODUTO.
+CREATE TABLE  Produto (
+codproduto INT NOT NULL,
+nomeproduto VARCHAR(30) NOT NULL,
+codfabricante SMALLINT NOT NULL,
+PRIMARY KEY (codproduto),
+CONSTRAINT fk_Produto_Fabricante
+FOREIGN KEY (codfabricante)
+REFERENCES Fabricante (codfabricante));
+
+
+-- Inserindo registros na tabela FABRICANTE.
+INSERT INTO Fabricante VALUES (1, 'Clear');
+INSERT INTO Fabricante VALUES (2, 'Rexona');
+INSERT INTO Fabricante VALUES (3, 'Jhonson & Jhonson');
+INSERT INTO Fabricante VALUES (4, 'Coleston');
+
+-- Inserindo registros na tabela PRODUTO.
+INSERT INTO Produto VALUES (10, 'Sabonete em Barra', 2);
+INSERT INTO Produto VALUES (11, 'Shampoo Anticaspa', 1);
+INSERT INTO Produto VALUES (12, 'Desodorante Aerosol Neutro', 2);
+INSERT INTO Produto VALUES (13, 'Sabonete Liquido', 2);
+INSERT INTO Produto VALUES (14, 'Protetor Solar 30', 3);
+INSERT INTO Produto VALUES (15, 'Shampoo 2 em 1', 2);
+INSERT INTO Produto VALUES (16, 'Desodorante Aerosol Morango', 2);
+INSERT INTO Produto VALUES (17, 'Shampoo Anticaspa', 2);
+INSERT INTO Produto VALUES (18, 'Protetor Solar 60', 3);
+INSERT INTO Produto VALUES (19, 'Desodorante Rollon', 1);
+
+select *from Produto;
+select *from Fabricante;
